@@ -11,8 +11,9 @@ export default function App() {
         <View style={styles.search}>
           <Searchbar placeholder="Search" />
         </View>
+
         <View style={styles.list}>
-          <Text>fuck u </Text>
+          <Text>list </Text>
         </View>
       </SafeAreaView>
       <ExpoStatusBar style="auto" />
