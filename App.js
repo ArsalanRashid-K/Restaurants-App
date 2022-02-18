@@ -7,8 +7,7 @@ export default function App() {
   return (
     <>
       <RestaurantsScreen />
-
-      <ExpoStatusBar style="auto" />bjbbhbhbhbh
+      <ExpoStatusBar style="auto" />
     </>
   );
 }

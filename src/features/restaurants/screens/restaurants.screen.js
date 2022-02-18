@@ -1,4 +1,3 @@
-import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import React from "react";
 import { RestaurantInfoCard } from "../components/restaurants-info-card.components";
 import { StatusBar, StyleSheet, SafeAreaView, Text, View } from "react-native";
