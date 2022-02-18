@@ -29,6 +29,6 @@ const styles = StyleSheet.create({
   list: {
     flex: 1,
     padding: 16,
-    backgroundColor: "#25539c",
+    backgroundColor: "white",
   },
 });
