@@ -10,14 +10,17 @@ const RestaurantCard = styled(Card)`
 // styled(Card) -- () because we are taking external components
 
 const RestaurantCardCover = styled(Card.Cover)`
-  padding: 10px;
+  padding: 16px;
   background-color: white;
 `;
 
 const Title = styled.Text`
-  padding: 10px;
-  color: red;
+  padding: 12px;
+  color: ${(props) => props.theme.ui.error};
 `;
+// ${(props) => props.theme -> will be same for everyone
+//<ThemeProvider theme={colors}> will give   color: ${(props) => props.theme.ui.error};
+// <ThemeProvider theme={thme}> will give   color: ${(props) => props.theme.colors.ui.error};
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
