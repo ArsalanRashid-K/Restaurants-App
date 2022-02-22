@@ -30,20 +30,3 @@ export const RestaurantsScreen = () => (
     </RestaurantContainer>
   </SafeArea>
 );
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-
-    /* marginTop: StatusBar.currentHeight  -> we can add this if the android stusbar does not show also if use Status bar from expo  */
-  },
-  search: {
-    padding: 16,
-    backgroundColor: "white",
-  },
-  list: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "white",
-  },
-});
