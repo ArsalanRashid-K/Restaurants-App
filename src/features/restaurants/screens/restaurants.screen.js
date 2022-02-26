@@ -1,4 +1,5 @@
 import React from "react";
+import { ScrollView } from "react-native";
 import { RestaurantInfoCard } from "../components/restaurants-info-card.components";
 import { StatusBar, StyleSheet, SafeAreaView, Text, View } from "react-native";
 import { Searchbar } from "react-native-paper";
@@ -21,12 +22,15 @@ const RestaurantContainer = styled.View`
 
 export const RestaurantsScreen = () => (
   <SafeArea>
-    <SearchContainer>
-      <Searchbar placeholder="Search" />
-    </SearchContainer>
-
-    <RestaurantContainer>
-      <RestaurantInfoCard />
-    </RestaurantContainer>
+    <ScrollView>
+      <SearchContainer>
+        <Searchbar placeholder="Search" />
+      </SearchContainer>
+      <RestaurantContainer>
+        <RestaurantInfoCard />
+        <RestaurantInfoCard />
+        <RestaurantInfoCard />
+      </RestaurantContainer>
+    </ScrollView>
   </SafeArea>
 );

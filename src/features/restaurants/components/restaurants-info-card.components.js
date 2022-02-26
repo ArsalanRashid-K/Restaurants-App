@@ -10,8 +10,10 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
-
+//  background-color: blue; or  background-color: ${(props) => props.theme.colors.bg.primary}
 // styled(Card) -- () because we are taking external components
+
+// ${(props) => props.theme -> will be same for everyone
 
 const RestaurantCardCover = styled(Card.Cover)`
   padding: ${(props) => props.theme.space[3]};
@@ -90,11 +92,11 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
               </Text>
             )}
 
-            <Spacer position="left" size="large">
+            <Spacer positin="left" size="large">
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
             </Spacer>
 
-            <Spacer position="left" size="large">
+            <Spacer positin="left" size="large">
               <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
             </Spacer>
           </SectionEnd>
