@@ -9,6 +9,7 @@ export const Icon = styled.Image`
 
 export const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
+  margin-top: 10px;
 `;
 //  background-color: blue; or  background-color: ${(props) => props.theme.colors.bg.primary}
 // styled(Card) -- () because we are taking external components
