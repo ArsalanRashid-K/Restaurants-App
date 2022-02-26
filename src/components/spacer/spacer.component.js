@@ -1,5 +1,5 @@
-import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
-import styled from "styled-components/native";
+import React from "react";
+import styled, { useTheme } from "styled-components/native";
 
 const sizeVariant = {
   small: 1,
@@ -22,14 +22,19 @@ const getVariant = (positin, size, theme) => {
   return `${property}:${value}`;
 };
 // console.log(getVariant('marginTop',1px));
-//props name same as CSS property will show error in any OS ex prop name positon showed error 
+//props name same as CSS property will show error in any OS ex prop name positon showed error
 // changing the prop name that does not match the CSS property.. ex-> prop name positin or any random name.. didnt show any error in any OS
-
-export const Spacer = styled.View`
-  ${({ positin, size, theme }) => getVariant(positin, size, theme)}
+const SpacerView = styled.View`
+  ${({ variant }) => variant};
 `;
 
-// Spacer.defaultProps = {
-//   position: "top",
-//   size: "small",
-// };
+export const Spacer = ({ position, size, children }) => {
+  const theme = useTheme();
+  const variant = getVariant(position, size, theme);
+  return <SpacerView variant={variant}>{children}</SpacerView>;
+};
+
+Spacer.defaultProps = {
+  position: "top",
+  size: "small",
+};

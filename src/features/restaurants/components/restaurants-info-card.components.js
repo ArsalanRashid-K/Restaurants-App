@@ -92,11 +92,10 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
               </Text>
             )}
 
-            <Spacer positin="left" size="large">
+            <Spacer position="left" size="large">
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
             </Spacer>
-
-            <Spacer positin="left" size="large">
+            <Spacer position="left" size="large">
               <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
             </Spacer>
           </SectionEnd>
