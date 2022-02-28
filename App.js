@@ -2,10 +2,9 @@ import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import React from "react";
 import { Text } from "react-native";
 import { ThemeProvider } from "styled-components/native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
 import { SafeArea } from "./src/components/Utility/safe-area-component";
+
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -14,6 +13,9 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
 import { theme } from "./src/infrastructure/theme";
 import { Ionicons } from "@expo/vector-icons";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
 import { AntDesign } from "@expo/vector-icons";
 
 const Setting = () => (
@@ -46,25 +48,41 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
-          <Tab.Navigator>
+          <Tab.Navigator
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ color, size }) => {
+                let iconName;
+
+                if (route.name === "Restaurants") {
+                  iconName = "md-restaurant";
+                } else if (route.name === "Settings") {
+                  iconName = "md-settings";
+                } else if (route.name === "Map") {
+                  iconName = "md-map";
+                }
+
+                // You can return any component that you like here!
+                // return <AntDesign name={iconName} size={size} color={color} />;
+                return <Ionicons name={iconName} size={size} color={color} />;
+              },
+              tabBarActiveTintColor: "tomato",
+              tabBarInactiveTintColor: "gray",
+              headerShown: false,
+            })}
+          >
+            <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+
+            <Tab.Screen name="Map" component={Maps} />
+
             <Tab.Screen
-              name="Restaurant"
-              component={RestaurantsScreen}
-              options={{ headerShown: false }}
-            />
-            <Tab.Screen
-              name="Setting"
+              name="Settings"
               component={Setting}
-              options={{ headerShown: false }}
-            />
-            <Tab.Screen
-              name="Map"
-              component={Maps}
-              options={{ headerShown: false, tabBarBadge: 3 }}
+              // options={{ headerShown: false ,tabBarBadge: 3,}}
             />
           </Tab.Navigator>
         </NavigationContainer>
       </ThemeProvider>
+
       <ExpoStatusBar style="auto" />
     </>
   );
