@@ -32,6 +32,7 @@ const label = (theme) => `
     font-weight: ${theme.fontWeights.medium};
 `;
 
+// these are key name which also reference to the functions above
 const variants = {
   body,
   label,
@@ -39,11 +40,17 @@ const variants = {
   error,
   hint,
 };
+console.log(variants);
 
 export const Text = styled.Text`
   ${({ theme }) => defaultTextStyles(theme)}
   ${({ variant, theme }) => variants[variant](theme)}
 `;
+//  this is a short hand syntax. ({ variant, theme })
+//   ${(props) => varints[props.variant](theme)}-> if we do props here.  AND  ${(props) => defaultTextStyles(props.theme)}
+
+// ${({ theme }) => defaultTextStyles(theme)} ->when <Text __>abc</Text> when there is nothing specific given ,.so the defaultTextStyles is called.
+// but when variant is given <Text variant="error">abc</Text> -> error is called obj variant
 
 Text.defaultProps = {
   variant: "body",
