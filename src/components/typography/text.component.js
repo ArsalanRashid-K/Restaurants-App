@@ -40,7 +40,7 @@ const variants = {
   error,
   hint,
 };
-console.log(variants);
+// console.log(variants);r
 
 export const Text = styled.Text`
   ${({ theme }) => defaultTextStyles(theme)}
