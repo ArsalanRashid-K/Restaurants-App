@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components/native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
-
+import { SafeArea } from "./src/components/Utility/safe-area-component";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -13,9 +13,20 @@ import {
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
 import { theme } from "./src/infrastructure/theme";
+import { Ionicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
-const Setting = () => <Text>Settingsho</Text>;
-const Maps = () => <Text>mapssss</Text>;
+const Setting = () => (
+  <SafeArea>
+    <Text>setting</Text>
+  </SafeArea>
+);
+const Maps = () => (
+  <SafeArea>
+    <Text>mapssss</Text>
+  </SafeArea>
+);
+
 export default function App() {
   // snytax for font.. from->react native expo font  github
   const [oswaldLoaded] = useOswald({
@@ -36,9 +47,21 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <NavigationContainer>
           <Tab.Navigator>
-            <Tab.Screen name="Restaurant" component={RestaurantsScreen} />
-            <Tab.Screen name="Setting" component={Setting} />
-            <Tab.Screen name="Map" component={Maps} />
+            <Tab.Screen
+              name="Restaurant"
+              component={RestaurantsScreen}
+              options={{ headerShown: false }}
+            />
+            <Tab.Screen
+              name="Setting"
+              component={Setting}
+              options={{ headerShown: false }}
+            />
+            <Tab.Screen
+              name="Map"
+              component={Maps}
+              options={{ headerShown: false, tabBarBadge: 3 }}
+            />
           </Tab.Navigator>
         </NavigationContainer>
       </ThemeProvider>
