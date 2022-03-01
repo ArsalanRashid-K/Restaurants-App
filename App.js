@@ -2,21 +2,24 @@ import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import React from "react";
 import { Text } from "react-native";
 import { ThemeProvider } from "styled-components/native";
+import { theme } from "./src/infrastructure/theme";
+
+// imports of function or screens
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
 import { SafeArea } from "./src/components/Utility/safe-area-component";
 
+// importing text from expo/google font
 import {
   useFonts as useOswald,
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
-import { theme } from "./src/infrastructure/theme";
+// import of navigation bar and icons .
 import { Ionicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons"; //random icon import to practice
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-import { AntDesign } from "@expo/vector-icons";
 
 const Setting = () => (
   <SafeArea>
@@ -30,6 +33,8 @@ const Maps = () => (
 );
 
 export default function App() {
+  // eslint-disable-next-line no-trailing-spaces
+
   // snytax for font.. from->react native expo font  github
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
@@ -38,10 +43,12 @@ export default function App() {
     Lato_400Regular,
   });
 
+  // if both are not called then return null
   if (!oswaldLoaded || !latoLoaded) {
     return null;
   }
 
+  // part of Tab. navigation syntax
   const Tab = createBottomTabNavigator();
 
   return (
