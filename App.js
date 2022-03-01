@@ -21,6 +21,16 @@ import { AntDesign } from "@expo/vector-icons"; //random icon import to practice
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+// part of Tab. navigation syntax
+const Tab = createBottomTabNavigator();
+
+const TAB_ICON = {
+  Restaurants: "md-restaurant",
+  Map: "md-map",
+  Settings: "md-settings",
+};
+
+//Screens
 const Setting = () => (
   <SafeArea>
     <Text>setting</Text>
@@ -32,6 +42,16 @@ const Maps = () => (
   </SafeArea>
 );
 
+const createScreenOptions = ({ route }) => {
+  const iconName = TAB_ICON[route.name];
+  return {
+    headerShown: false,
+
+    tabBarIcon: ({ size, color }) => (
+      <Ionicons name={iconName} size={size} color={color} />
+    ),
+  };
+};
 export default function App() {
   // eslint-disable-next-line no-trailing-spaces
 
@@ -48,34 +68,16 @@ export default function App() {
     return null;
   }
 
-  // part of Tab. navigation syntax
-  const Tab = createBottomTabNavigator();
-
   return (
     <>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
           <Tab.Navigator
-            screenOptions={({ route }) => ({
-              tabBarIcon: ({ color, size }) => {
-                let iconName;
-
-                if (route.name === "Restaurants") {
-                  iconName = "md-restaurant";
-                } else if (route.name === "Settings") {
-                  iconName = "md-settings";
-                } else if (route.name === "Map") {
-                  iconName = "md-map";
-                }
-
-                // You can return any component that you like here!
-                // return <AntDesign name={iconName} size={size} color={color} />;
-                return <Ionicons name={iconName} size={size} color={color} />;
-              },
-              tabBarActiveTintColor: "tomato",
-              tabBarInactiveTintColor: "gray",
-              headerShown: false,
-            })}
+            screenOptions={createScreenOptions}
+            tabBarOptions={{
+              activeTintColor: "tomato",
+              inactiveTintColor: "gray",
+            }}
           >
             <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
 
@@ -84,7 +86,7 @@ export default function App() {
             <Tab.Screen
               name="Settings"
               component={Setting}
-              // options={{ headerShown: false ,tabBarBadge: 3,}}
+              // options={{ headerShown: false, tabBarBadge: 3 }}
             />
           </Tab.Navigator>
         </NavigationContainer>
