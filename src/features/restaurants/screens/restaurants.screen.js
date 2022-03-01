@@ -1,6 +1,6 @@
 import React from "react";
 import { RestaurantInfoCard } from "../components/restaurants-info-card.components";
-import { StatusBar, FlatList, SafeAreaView, Text, View } from "react-native";
+import { FlatList } from "react-native";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
 import { SafeArea } from "../../../components/Utility/safe-area-component";
