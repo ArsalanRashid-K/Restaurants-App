@@ -23,6 +23,7 @@ const getVariant = (positin, size, theme) => {
 };
 //props name same as CSS property will show error in any OS ex prop name positon showed error
 // changing the prop name that does not match the CSS property.. ex-> prop name positin or any random name.. didnt show any error in any OS
+
 const SpacerView = styled.View`
   ${({ variant }) => variant};
 `;

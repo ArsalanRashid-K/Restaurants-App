@@ -33,12 +33,15 @@ export const RestaurantsScreen = () => (
         { name: 13 },
         { name: 14 },
       ]}
+      // it does not matter what we name the data it is just there for how many times it shows on the screen
       renderItem={() => (
         <Spacer position="bottom" size="large">
           <RestaurantInfoCard />
         </Spacer>
       )}
       keyExtractor={(item) => item.name}
+      //  the data { fe: 1 } and item should be same {(item) => item.fe}
+
       // eslint-disable-next-line react-native/no-inline-styles
       contentContainerStyle={{ padding: 16 }}
       // contentContainerStyle-> applied to the scroll view content container which wraps all of the child views.
