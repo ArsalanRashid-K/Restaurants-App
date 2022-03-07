@@ -3,6 +3,7 @@ import chicago from "./chicago.json";
 import toronto from "./toronto.json";
 import san_francisco from "./san_francisco.json";
 
+// This is mock object, that has logitude and latitude as properties.. that reference to the JSON cities
 export const mocks = {
   "51.219448,4.402464": antwerp,
   "43.653225,-79.383186": toronto,

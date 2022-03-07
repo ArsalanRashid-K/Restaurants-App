@@ -75,7 +75,7 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         {/* we only have to wrap theme provider once because it uses context api.
-      // what ever is wrapped in theme provider can access it . even if its is down below the tree 
+      // what ever is wrapped in theme provider can access it . even if its is down below the tree
       // since theme from index.js has object . call them specificly by props.theme */}
 
         <NavigationContainer>
