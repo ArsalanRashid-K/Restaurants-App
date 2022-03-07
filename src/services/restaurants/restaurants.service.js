@@ -15,17 +15,18 @@ export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
 };
 // when using new Promise its awaiting something in the future. so it has to return something awaiting--
 
-const restaurantTransform = (boy) => {
-  return camelize(boy);
+const restaurantTransform = (result) => {
+  const newResult = camelize(result);
+  return newResult;
 };
 restaurantsRequest()
-  .then(restaurantTransform)
-  .then((t) => {
-    console.log(t);
+  .then(restaurantTransform) // this is just camelizing
+  .then((transformedResponse) => {
+    // console.log(transformedResponse);
   })
   .catch((err) => {
     // console.log("error- " + err);
   });
 
-//    .then() is used for showing ,is it is resolved -result
+//    .then() is used for showing ,is it is resolved -result  and .then(()=>{}) this is the main part
 //    .catch() is used for showing rejects -error
