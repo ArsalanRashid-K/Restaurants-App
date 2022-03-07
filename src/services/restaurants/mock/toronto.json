@@ -38,7 +38,7 @@
         "place_id": "some place id 61",
         "plus_code": {
           "compound_code": "",
-          "global_code": "",
+          "global_code": ""
         },
         "rating": 4.2,
         "reference": "",
@@ -89,7 +89,7 @@
         "place_id": "some place id 62",
         "plus_code": {
           "compound_code": "",
-          "global_code": "",
+          "global_code": ""
         },
         "rating": 4.5,
         "reference": "",

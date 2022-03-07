@@ -15,9 +15,16 @@ export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
 };
 // when using new Promise its awaiting something in the future. so it has to return something awaiting--
 
-const restaurantTransform = (result) => {
-  const newResult = camelize(result);
-  return newResult;
+const restaurantTransform = ({ results = [] }) => {
+  const mappedResult = results.map((restaurant) => {
+    return {
+      ...restaurant,
+      isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
+      isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY",
+    };
+  });
+  // console.log(mappedResult);
+  return camelize(mappedResult);
 };
 restaurantsRequest()
   .then(restaurantTransform) // this is just camelizing
