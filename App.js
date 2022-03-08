@@ -3,12 +3,11 @@ import React from "react";
 import { Text } from "react-native";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme";
-import { restaurantsRequest } from "./src/services/restaurants/restaurants.service";
 
 // imports of function or screens
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
 import { SafeArea } from "./src/components/Utility/safe-area-component";
-
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 // importing text from expo/google font
 import {
   useFonts as useOswald,
@@ -77,26 +76,27 @@ export default function App() {
         {/* we only have to wrap theme provider once because it uses context api.
       // what ever is wrapped in theme provider can access it . even if its is down below the tree
       // since theme from index.js has object . call them specificly by props.theme */}
+        <RestaurantsContextProvider>
+          <NavigationContainer>
+            <Tab.Navigator
+              screenOptions={createScreenOptions}
+              tabBarOptions={{
+                activeTintColor: "tomato",
+                inactiveTintColor: "gray",
+              }}
+            >
+              <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
 
-        <NavigationContainer>
-          <Tab.Navigator
-            screenOptions={createScreenOptions}
-            tabBarOptions={{
-              activeTintColor: "tomato",
-              inactiveTintColor: "gray",
-            }}
-          >
-            <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+              <Tab.Screen name="Map" component={Maps} />
 
-            <Tab.Screen name="Map" component={Maps} />
-
-            <Tab.Screen
-              name="Settings"
-              component={Setting}
-              // options={{ headerShown: false, tabBarBadge: 3 }}
-            />
-          </Tab.Navigator>
-        </NavigationContainer>
+              <Tab.Screen
+                name="Settings"
+                component={Setting}
+                // options={{ headerShown: false, tabBarBadge: 3 }}
+              />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </RestaurantsContextProvider>
       </ThemeProvider>
 
       <ExpoStatusBar style="auto" />
