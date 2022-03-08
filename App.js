@@ -3,7 +3,6 @@ import React from "react";
 import { Text } from "react-native";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme";
-import { restaurantsRequest } from "./src/services/restaurants/restaurants.service";
 
 // imports of function or screens
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
