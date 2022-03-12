@@ -15,9 +15,21 @@ export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
 };
 // when using new Promise its awaiting something in the future. so it has to return something awaiting--
 
-const restaurantTransform = (result) => {
-  const newResult = camelize(result);
-  return newResult;
+// restaurantTransform is getting results from mock coz this is called inside restaurantsRequest()
+//  we are using map so we can on every single array since this api is in array ->results
+const restaurantTransform = ({ results = [] }) => {
+  // syntax to call map ((x)=>x) = x will get data from whatever before the DOT .map
+  const m = results.map((res) => {
+    return {
+      // here we are just returning the whole array->...res and also adding some new properties to it.
+      ...res,
+      isOpenNow: res.opening_hours && res.opening_hours.open_now,
+      isClosedTemporarily: res.business.status === "CLOSED_TEMPORARILY",
+    };
+  });
+  console.log(m);
+  // const newResult = camelize(result);
+  // return newResult;
 };
 restaurantsRequest()
   .then(restaurantTransform) // this is just camelizing
