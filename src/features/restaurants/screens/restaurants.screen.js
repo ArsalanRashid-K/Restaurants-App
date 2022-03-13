@@ -16,7 +16,7 @@ export const RestaurantsScreen = () => {
   //  restaurantContext  this is used to access the provider
   const restaurantContext = useContext(RestaurantsContext);
 
-  console.log(restaurantContext);
+  // console.log(restaurantContext);
   return (
     <SafeArea>
       <SearchContainer>
