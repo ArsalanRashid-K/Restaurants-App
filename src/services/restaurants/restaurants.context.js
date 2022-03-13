@@ -11,7 +11,7 @@ export const RestaurantsContextProvider = ({ children }) => {
   const [restaurants, setRestaurants] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  console.log(error);
+  // console.log(error);
   //  the restaurants is an empty array but value is set by in retrieveRestaurants by setRestaurants(results)), can also do this  setRestaurants([1, 2, 3]);
   //results  has the mock api value. do console.log(results);
 
