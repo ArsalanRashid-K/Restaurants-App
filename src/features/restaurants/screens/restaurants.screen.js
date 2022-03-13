@@ -14,9 +14,9 @@ const SearchContainer = styled.View`
 
 export const RestaurantsScreen = () => {
   //  restaurantContext  this is used to access the provider
-  const restaurantContext = useContext(RestaurantsContext);
+  const { restaurants, isLoading, error } = useContext(RestaurantsContext);
 
-  // console.log(restaurantContext);
+  // console.log(restaurants);
   return (
     <SafeArea>
       <SearchContainer>
@@ -24,13 +24,16 @@ export const RestaurantsScreen = () => {
       </SearchContainer>
       <FlatList
         // now the data is using the array from restaurantContext restaurant
-        data={restaurantContext.restaurants}
+        data={restaurants}
         // it does not matter what we name the data it is just there for how many times it shows on the screen
-        renderItem={() => (
-          <Spacer position="bottom" size="large">
-            <RestaurantInfoCard />
-          </Spacer>
-        )}
+        renderItem={({ item }) => {
+          // console.log(item);
+          return (
+            <Spacer position="bottom" size="large">
+              <RestaurantInfoCard restaurant={item} />
+            </Spacer>
+          );
+        }}
         keyExtractor={(item) => item.name}
         //  the data { fe: 1 } and item should be same {(item) => item.fe}
 
