@@ -13,7 +13,7 @@ const SearchContainer = styled.View`
 `;
 
 export const RestaurantsScreen = () => {
-  //  restaurantContext  this is used to access the provider  
+  //  restaurantContext  this is used to access the provider
   const restaurantContext = useContext(RestaurantsContext);
 
   console.log(restaurantContext);
@@ -23,7 +23,7 @@ export const RestaurantsScreen = () => {
         <Searchbar placeholder="Search" />
       </SearchContainer>
       <FlatList
-      // now the data is using the array from restaurantContext restaurant
+        // now the data is using the array from restaurantContext restaurant
         data={restaurantContext.restaurants}
         // it does not matter what we name the data it is just there for how many times it shows on the screen
         renderItem={() => (
@@ -34,7 +34,6 @@ export const RestaurantsScreen = () => {
         keyExtractor={(item) => item.name}
         //  the data { fe: 1 } and item should be same {(item) => item.fe}
 
-        // eslint-disable-next-line react-native/no-inline-styles
         contentContainerStyle={{ padding: 16 }}
         // contentContainerStyle-> applied to the scroll view content container which wraps all of the child views.
       />
