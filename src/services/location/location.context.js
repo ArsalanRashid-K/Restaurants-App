@@ -13,16 +13,22 @@ export const LocationContextProvider = ({ children }) => {
   const onSearch = (searchKeyword) => {
     setIsLoading(true);
     setKeyword(searchKeyword);
-    console.log(searchKeyword);
+    // console.log(searchKeyword);
+    if (!searchKeyword.length) {
+      // don't do anything
+      return;
+    }
     locationRequest(searchKeyword.toLowerCase())
       .then(locationTransform)
       .then((result) => {
         setIsLoading(false);
         setLocation(result);
+        console.log(result);
       })
       .catch((error) => {
         setIsLoading(false);
         setError(error);
+        console.log(error);
       });
   };
 
