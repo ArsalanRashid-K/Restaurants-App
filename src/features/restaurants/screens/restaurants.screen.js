@@ -1,17 +1,14 @@
 import React, { useContext } from "react";
 import { RestaurantInfoCard } from "../components/restaurants-info-card.components";
 import { FlatList } from "react-native";
-import { Searchbar } from "react-native-paper";
+
 import { ActivityIndicator, Colors } from "react-native-paper";
 import styled from "styled-components/native";
 import { SafeArea } from "../../../components/Utility/safe-area-component";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
-
-const SearchContainer = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-`;
+import { Search } from "../components/search.component";
 
 const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
@@ -34,9 +31,8 @@ export const RestaurantsScreen = () => {
           <Loading size={50} animating={true} color={Colors.blue300} />
         </LoadingContainer>
       )}
-      <SearchContainer>
-        <Searchbar placeholder="Search" />
-      </SearchContainer>
+      <Search />
+
       <FlatList
         // now the data is using the array from restaurantContext restaurant
         data={restaurants}
