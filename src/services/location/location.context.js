@@ -18,7 +18,6 @@ export const LocationContextProvider = ({ children }) => {
       .then((result) => {
         setIsLoading(false);
         setLocation(result);
-        console.log(result);
       })
       .catch((error) => {
         setIsLoading(false);
@@ -26,9 +25,7 @@ export const LocationContextProvider = ({ children }) => {
       });
   };
 
-  useEffect(() => {
-    onSearch();
-  }, []);
+ 
 
   return (
     <LocationContext.Provider
