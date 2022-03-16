@@ -25,13 +25,13 @@ export const RestaurantsContextProvider = ({ children }) => {
   //results  has the mock api value. do console.log(results);
 
   // console.log(restaurants);
-  const retrieveRestaurants = (location) => {
+  const retrieveRestaurants = (loc) => {
     setIsLoading(true);
     setRestaurants([]);
     setTimeout(() => {
       // restaurantsRequest() or ("false location") => this is getting its value restaurants.service in which we have already given alocation .
       //  if we overwrite restaurantsRequest("false location") - will show error because of new promise reject
-      restaurantsRequest(location)
+      restaurantsRequest(loc)
         .then(restaurantsTransform)
         .then((results) => {
           // console.log(results);

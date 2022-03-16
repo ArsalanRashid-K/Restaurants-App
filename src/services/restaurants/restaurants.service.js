@@ -19,10 +19,13 @@ export const restaurantsRequest = (location) => {
 export const restaurantsTransform = ({ results = [] }) => {
   const mappedResult = results.map((restaurant) => {
     restaurant.photos = restaurant.photos.map((p) => {
-      return mockImages[Math.floor(Math.random() * (mockImages.length - 1))];
+      return mockImages[Math.ceil(Math.random() * (mockImages.length - 1))];
     });
+
+    //  this is translating the api to what we provided in restaurants info card components
     return {
       ...restaurant,
+      address: restaurant.vicinity,
       isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
       isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY",
     };
