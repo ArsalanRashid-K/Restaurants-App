@@ -6,9 +6,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { RestaurantsScreen } from "../../features/restaurants/screens/restaurants.screen";
 import { SafeArea } from "../../components/Utility/safe-area-component";
-
+import { RestaurantsNavigator } from "./restaurants.navigator";
 // part of Tab. navigation syntax
 const Tab = createBottomTabNavigator();
 
@@ -51,7 +50,7 @@ export const AppNavigation = () => {
           inactiveTintColor: "gray",
         }}
       >
-        <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+        <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
 
         <Tab.Screen name="Map" component={Maps} />
 
