@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { RestaurantInfoCard } from "../components/restaurants-info-card.components";
-import { FlatList } from "react-native";
+import { FlatList, Pressable } from "react-native";
 
 import { ActivityIndicator, Colors } from "react-native-paper";
 import styled from "styled-components/native";
@@ -19,7 +19,8 @@ const LoadingContainer = styled.View`
   left: 50%;
 `;
 
-export const RestaurantsScreen = () => {
+export const RestaurantsScreen = ({ navigation }) => {
+  //  navigation is a prop from stack and only component that are on the restaurant screen can access it-// console.log(navigation);
   //  restaurantContext  this is used to access the provider
   const { restaurants, isLoading, error } = useContext(RestaurantsContext);
 
@@ -40,9 +41,11 @@ export const RestaurantsScreen = () => {
         renderItem={({ item }) => {
           // console.log(item);
           return (
-            <Spacer position="bottom" size="large">
-              <RestaurantInfoCard restaurant={item} />
-            </Spacer>
+            <Pressable onPress={() => navigation.navigate("RestaurantDetail")}>
+              <Spacer position="bottom" size="large">
+                <RestaurantInfoCard restaurant={item} />
+              </Spacer>
+            </Pressable>
           );
         }}
         keyExtractor={(item) => item.name}
