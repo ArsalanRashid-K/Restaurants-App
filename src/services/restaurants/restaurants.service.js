@@ -3,7 +3,7 @@ import { mocks, mockImages } from "./mock";
 import camelize from "camelize";
 
 // location - is varible
-export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
+export const restaurantsRequest = (location) => {
   // console.log(mocks[location]);
   // new Promise takes resolve and reject if its true return resolve if false return reject
   return new Promise((resolve, reject) => {
