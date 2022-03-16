@@ -14,22 +14,24 @@ export const LocationContextProvider = ({ children }) => {
     setIsLoading(true);
     setKeyword(searchKeyword);
     // console.log(searchKeyword);
-    if (!searchKeyword.length) {
+  };
+  useEffect(() => {
+    if (!keyword.length) {
       // don't do anything
       return;
     }
-    locationRequest(searchKeyword.toLowerCase())
+    locationRequest(keyword.toLowerCase())
       .then(locationTransform)
       .then((result) => {
         setIsLoading(false);
         setLocation(result);
         // console.log(result);
       })
-      .catch((error) => {
+      .catch((err) => {
         setIsLoading(false);
-        setError(error);
+        setError(err);
       });
-  };
+  }, [keyword]);
 
   return (
     <LocationContext.Provider
