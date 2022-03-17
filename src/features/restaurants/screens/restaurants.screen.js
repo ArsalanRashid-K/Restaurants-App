@@ -41,8 +41,12 @@ export const RestaurantsScreen = ({ navigation }) => {
         renderItem={({ item }) => {
           // console.log(item);
           return (
+            // when we click any where on the restarunt screen . we will be naviagted to RestaurantDetail .
+            //  we wrapped everything in restaurant StackNavigator- which provides a context which can be accessed within a tree
             <TouchableOpacity
-              onPress={() => navigation.navigate("RestaurantDetail")}
+              onPress={() =>
+                navigation.navigate("RestaurantDetail", { restaurant: item })
+              }
             >
               <Spacer position="bottom" size="large">
                 <RestaurantInfoCard restaurant={item} />
