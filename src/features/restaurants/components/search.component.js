@@ -13,6 +13,10 @@ export const Search = () => {
   const [searchKeyword, setSearchKeyword] = useState(keyword);
   //   console.log(locationContext);
 
+  //  this is updating the search in maps searchan resturant search
+  useEffect(() => {
+    setSearchKeyword(keyword);
+  }, [keyword]);
   return (
     <SearchContainer>
       <Searchbar
