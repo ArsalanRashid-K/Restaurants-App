@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import MapView from "react-native-maps";
 import styled from "styled-components/native";
+import { View, Text } from "react-native";
 
 import { Search } from "../components/search.component";
 
@@ -11,6 +12,8 @@ const Map = styled(MapView)`
   height: 100%;
   width: 100%;
 `;
+
+const SomeText = styled.Text``;
 
 export const MapScreen = () => {
   const { location } = useContext(LocationContext);
@@ -47,7 +50,11 @@ export const MapScreen = () => {
                 latitude: restaurant.geometry.location.lat,
                 longitude: restaurant.geometry.location.lng,
               }}
-            />
+            >
+              <View>
+                <SomeText>hietehihei</SomeText>
+              </View>
+            </MapView.Marker>
           );
         })}
       </Map>
