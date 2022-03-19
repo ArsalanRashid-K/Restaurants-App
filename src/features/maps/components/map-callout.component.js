@@ -1,13 +1,7 @@
-import React, { useContext, useState, useEffect } from "react";
-import MapView from "react-native-maps";
-import styled from "styled-components/native";
+import React from "react";
 
-const Mytext = styled.Text``;
+import { CompactRestaurantInfo } from "../../../components/restaurant/compact-restaurant-info.component";
 
 export const MapCallout = ({ restaurant }) => {
-  return (
-    <>
-      <Mytext>{restaurant.name} </Mytext>
-    </>
-  );
+  return <CompactRestaurantInfo restaurant={restaurant} />;
 };
