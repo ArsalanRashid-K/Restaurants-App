@@ -7,6 +7,7 @@ import { theme } from "./src/infrastructure/theme";
 
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
+import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 import { Navigation } from "./src/infrastructure/navigation";
 // importing text from expo/google font
 import {
@@ -40,11 +41,14 @@ export default function App() {
       // since theme from index.js has object . call them specificly by props.theme */}
 
         {/*  RestaurantsContextProvider all children  can access the restaurant prop */}
-        <LocationContextProvider>
-          <RestaurantsContextProvider>
-            <Navigation />
-          </RestaurantsContextProvider>
-        </LocationContextProvider>
+
+        <FavouritesContextProvider>
+          <LocationContextProvider>
+            <RestaurantsContextProvider>
+              <Navigation />
+            </RestaurantsContextProvider>
+          </LocationContextProvider>
+        </FavouritesContextProvider>
       </ThemeProvider>
 
       <ExpoStatusBar style="auto" />
