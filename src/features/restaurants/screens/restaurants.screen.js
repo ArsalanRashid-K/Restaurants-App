@@ -7,8 +7,9 @@ import styled from "styled-components/native";
 import { SafeArea } from "../../../components/Utility/safe-area-component";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { Search } from "../components/search.component";
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { FavouritesContext } from "../../../services/favourites/favourites.context";
 
 const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
@@ -22,8 +23,9 @@ const LoadingContainer = styled.View`
 export const RestaurantsScreen = ({ navigation }) => {
   //  navigation is a prop from stack and only component that are on the restaurant screen can access it-// console.log(navigation);
   //  restaurantContext  this is used to access the provider
-  const { restaurants, isLoading, error } = useContext(RestaurantsContext);
-
+  const { restaurants, isLoading } = useContext(RestaurantsContext);
+  const { favourites } = useContext(FavouritesContext);
+  // console.log(favourites);
   // console.log(restaurants);
   return (
     <SafeArea>
