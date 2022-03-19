@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import MapView from "react-native-maps";
 import styled from "styled-components/native";
+import { View, Text } from "react-native";
 
 import { Search } from "../components/search.component";
 
@@ -11,6 +12,8 @@ const Map = styled(MapView)`
   height: 100%;
   width: 100%;
 `;
+
+const SomeText = styled.Text``;
 
 export const MapScreen = () => {
   const { location } = useContext(LocationContext);
@@ -24,8 +27,7 @@ export const MapScreen = () => {
     const northeastLat = viewport.northeast.lat;
     const southwestLat = viewport.southwest.lat;
 
-    const latDelta = northeastLat - southwestLat;
-    setLatDelta(latDelta);
+    setLatDelta(northeastLat - southwestLat);
   }, [location, viewport]);
   return (
     <>
@@ -39,7 +41,21 @@ export const MapScreen = () => {
         }}
       >
         {restaurants.map((restaurant) => {
-          return null;
+          //this returns marking the location of specific restaurants
+          return (
+            <MapView.Marker
+              key={restaurant.name}
+              title={restaurant.name}
+              coordinate={{
+                latitude: restaurant.geometry.location.lat,
+                longitude: restaurant.geometry.location.lng,
+              }}
+            >
+              <MapView.Callout>
+                <SomeText> hi teher</SomeText>
+              </MapView.Callout>
+            </MapView.Marker>
+          );
         })}
       </Map>
     </>
