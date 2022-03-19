@@ -24,8 +24,7 @@ export const MapScreen = () => {
     const northeastLat = viewport.northeast.lat;
     const southwestLat = viewport.southwest.lat;
 
-    const latDelta = northeastLat - southwestLat;
-    setLatDelta(latDelta);
+    setLatDelta(northeastLat - southwestLat);
   }, [location, viewport]);
   return (
     <>
@@ -39,7 +38,17 @@ export const MapScreen = () => {
         }}
       >
         {restaurants.map((restaurant) => {
-          return null;
+          //this returns marking the location of specific restaurants
+          return (
+            <MapView.Marker
+              key={restaurant.name}
+              title={restaurant.name}
+              coordinate={{
+                latitude: restaurant.geometry.location.lat,
+                longitude: restaurant.geometry.location.lng,
+              }}
+            />
+          );
         })}
       </Map>
     </>
