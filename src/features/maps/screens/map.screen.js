@@ -51,9 +51,9 @@ export const MapScreen = () => {
                 longitude: restaurant.geometry.location.lng,
               }}
             >
-              <View>
-                <SomeText>hietehihei</SomeText>
-              </View>
+              <MapView.Callout>
+                <SomeText> hi teher</SomeText>
+              </MapView.Callout>
             </MapView.Marker>
           );
         })}
