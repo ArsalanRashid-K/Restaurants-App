@@ -25,9 +25,9 @@ const Item = styled.View`
 
 const isAndroid = Platform.OS === "android";
 
-export const CompactRestaurantInfo = ({ restaurant }) => {
+export const CompactRestaurantInfo = ({ restaurant, isMap }) => {
   //  CompactImage was not showing img on android so we used CompactWebview
-  const Image = isAndroid ? CompactWebview : CompactImage;
+  const Image = isAndroid && isMap ? CompactWebview : CompactImage;
 
   return (
     <Item>
