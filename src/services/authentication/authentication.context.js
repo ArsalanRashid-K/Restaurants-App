@@ -1,8 +1,10 @@
 import React, { createContext, useState, useEffect } from "react";
 import { loginRequest } from "./authentication.service";
+
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
+
 export const AuthenticationContext = createContext();
 
 export const AuthenticationContextProvider = ({ children }) => {

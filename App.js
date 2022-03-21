@@ -5,8 +5,9 @@ import { theme } from "./src/infrastructure/theme";
 
 // imports of function or screens
 
-//
+//this is not working as expected
 // import * as firebase from "firebase/compat/app";
+
 // OR
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
@@ -15,7 +16,7 @@ import "firebase/compat/firestore";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
-//
+// CONTEXTS
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
