@@ -6,24 +6,20 @@ import { theme } from "./src/infrastructure/theme";
 // imports of function or screens
 
 //
-import * as firebase from "firebase/compat/app";
+// import * as firebase from "firebase/compat/app";
 // OR
-// import firebase from "firebase/compat/app";
-// import "firebase/compat/auth";
-// import "firebase/compat/firestore";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
 
 import { initializeApp } from "firebase/app";
-import {
-  getAuth,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 //
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
-// import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
+import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 
 import { Navigation } from "./src/infrastructure/navigation";
 // importing text from expo/google font
@@ -44,27 +40,15 @@ const firebaseConfig = {
   appId: "1:916114640663:web:ddd773d5bbe8f106d0f152",
 };
 
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// if (!firebase.apps.length) {
-//   firebase.initializeApp(firebaseConfig);
-// }
-
 // MAIN PROGRAM STARTS FROM HERE---->
 export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  useEffect(() => {
-    signInWithEmailAndPassword(auth, "ar@k.com", "lololo")
-      .then((user) => {
-        console.log(user);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, []);
-
   // eslint-disable-next-line no-trailing-spaces
 
   // snytax for font.. from->react native expo font  github
@@ -89,15 +73,15 @@ export default function App() {
 
         {/*  RestaurantsContextProvider all children  can access the restaurant prop */}
 
-        {/* <AuthenticationContextProvider> */}
-        <FavouritesContextProvider>
-          <LocationContextProvider>
-            <RestaurantsContextProvider>
-              <Navigation />
-            </RestaurantsContextProvider>
-          </LocationContextProvider>
-        </FavouritesContextProvider>
-        {/* </AuthenticationContextProvider> */}
+        <AuthenticationContextProvider>
+          <FavouritesContextProvider>
+            <LocationContextProvider>
+              <RestaurantsContextProvider>
+                <Navigation />
+              </RestaurantsContextProvider>
+            </LocationContextProvider>
+          </FavouritesContextProvider>
+        </AuthenticationContextProvider>
       </ThemeProvider>
 
       <ExpoStatusBar style="auto" />
