@@ -5,6 +5,7 @@ import {
   AccountBackground,
   AccountCover,
   AccountContainer,
+  AuthButton,
 } from "../components/account.styles";
 
 export const AccountScreen = () => {
@@ -12,13 +13,13 @@ export const AccountScreen = () => {
     <AccountBackground>
       <AccountCover />
       <AccountContainer>
-        <Button
+        <AuthButton
           icon="lock-open-outline"
           mode="contained"
           onPress={() => console.log("Pressed")}
         >
           Login
-        </Button>
+        </AuthButton>
       </AccountContainer>
     </AccountBackground>
   );
