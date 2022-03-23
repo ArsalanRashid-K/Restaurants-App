@@ -10,6 +10,9 @@ import { SafeArea } from "../../components/Utility/safe-area-component";
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { MapScreen } from "../../features/maps/screens/map.screen";
 
+import { RestaurantsContextProvider } from "../../services/restaurants/restaurants.context";
+import { LocationContextProvider } from "../../services/location/location.context";
+import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
 import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
 // part of Tab. navigation syntax
@@ -45,22 +48,28 @@ const createScreenOptions = ({ route }) => {
 
 export const AppNavigation = () => {
   return (
-    <Tab.Navigator
-      screenOptions={createScreenOptions}
-      tabBarOptions={{
-        activeTintColor: "tomato",
-        inactiveTintColor: "gray",
-      }}
-    >
-      <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
+    <FavouritesContextProvider>
+      <LocationContextProvider>
+        <RestaurantsContextProvider>
+          <Tab.Navigator
+            screenOptions={createScreenOptions}
+            tabBarOptions={{
+              activeTintColor: "tomato",
+              inactiveTintColor: "gray",
+            }}
+          >
+            <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
 
-      <Tab.Screen name="Map" component={MapScreen} />
+            <Tab.Screen name="Map" component={MapScreen} />
 
-      <Tab.Screen
-        name="Settings"
-        component={Setting}
-        // options={{ headerShown: false, tabBarBadge: 3 }}
-      />
-    </Tab.Navigator>
+            <Tab.Screen
+              name="Settings"
+              component={Setting}
+              // options={{ headerShown: false, tabBarBadge: 3 }}
+            />
+          </Tab.Navigator>
+        </RestaurantsContextProvider>
+      </LocationContextProvider>
+    </FavouritesContextProvider>
   );
 };
