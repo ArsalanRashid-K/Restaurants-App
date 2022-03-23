@@ -17,9 +17,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 // CONTEXTS
-import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
-import { LocationContextProvider } from "./src/services/location/location.context";
-import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
+
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 
 import { Navigation } from "./src/infrastructure/navigation";
@@ -73,15 +71,8 @@ export default function App() {
       // since theme from index.js has object . call them specificly by props.theme */}
 
         {/*  RestaurantsContextProvider all children  can access the restaurant prop */}
-
         <AuthenticationContextProvider>
-          <FavouritesContextProvider>
-            <LocationContextProvider>
-              <RestaurantsContextProvider>
-                <Navigation />
-              </RestaurantsContextProvider>
-            </LocationContextProvider>
-          </FavouritesContextProvider>
+          <Navigation />
         </AuthenticationContextProvider>
       </ThemeProvider>
 
