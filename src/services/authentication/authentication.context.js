@@ -18,6 +18,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       .then((u) => {
         setUser(u);
         setIsLoading(false);
+        console.log(u);
       })
       .catch((e) => {
         setIsLoading(false);
@@ -36,6 +37,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       .then((u) => {
         setUser(u);
         setIsLoading(false);
+        console.log(u);
       })
       .catch((e) => {
         setIsLoading(false);
@@ -46,6 +48,7 @@ export const AuthenticationContextProvider = ({ children }) => {
   return (
     <AuthenticationContext.Provider
       value={{
+        isAuthenticated: !!user,
         user,
         isLoading,
         error,

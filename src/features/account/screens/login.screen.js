@@ -23,6 +23,7 @@ export const LoginScreen = ({ navigation }) => {
     <AccountBackground>
       <AccountCover />
       <Title>Meals To Go</Title>
+
       <AccountContainer>
         <AuthInput
           label="E-mail"
@@ -42,6 +43,7 @@ export const LoginScreen = ({ navigation }) => {
             onChangeText={(p) => setPassword(p)}
           />
         </Spacer>
+
         {error && (
           <ErrorContainer size="large">
             <Text variant="error">{error}</Text>
@@ -58,10 +60,7 @@ export const LoginScreen = ({ navigation }) => {
         </Spacer>
       </AccountContainer>
       <Spacer size="large">
-        <AuthButton
-          mode="contained"
-          onPress={() => navigation.navigate("Main")}
-        >
+        <AuthButton mode="contained" onPress={() => navigation.goBack()}>
           Back
         </AuthButton>
       </Spacer>
