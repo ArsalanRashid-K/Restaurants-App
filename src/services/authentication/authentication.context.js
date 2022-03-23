@@ -43,7 +43,8 @@ export const AuthenticationContextProvider = ({ children }) => {
       setError("Error: Passwords do not match");
       return;
     }
-
+   
+    
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
