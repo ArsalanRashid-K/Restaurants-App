@@ -1,9 +1,10 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 import { loginRequest } from "./authentication.service";
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 export const AuthenticationContext = createContext();
 
@@ -12,13 +13,23 @@ export const AuthenticationContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
+  // const auth = getAuth();
+  firebase.auth().onAuthStateChanged((usr) => {
+    if (usr) {
+      setUser(usr);
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
+    }
+  });
+
   const onLogin = (email, password) => {
     setIsLoading(true);
     loginRequest(email, password)
       .then((u) => {
         setUser(u);
         setIsLoading(false);
-        console.log(u);
+        // console.log(u);
       })
       .catch((e) => {
         setIsLoading(false);
@@ -38,7 +49,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       .then((u) => {
         setUser(u);
         setIsLoading(false);
-        console.log(u);
+        // console.log(u);
       })
       .catch((e) => {
         setIsLoading(false);
@@ -46,6 +57,10 @@ export const AuthenticationContextProvider = ({ children }) => {
       });
   };
 
+  const onLogout = () => {
+    setUser(null);
+    firebase.auth().signOut();
+  };
   return (
     <AuthenticationContext.Provider
       value={{
@@ -55,6 +70,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         error,
         onLogin,
         onRegister,
+        onLogout,
       }}
     >
       {children}
