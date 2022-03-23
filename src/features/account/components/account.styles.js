@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import { Button } from "react-native-paper";
+import { TextInput } from "react-native-paper";
 
 import { colors } from "../../../infrastructure/theme/colors";
 
@@ -12,6 +13,7 @@ export const AccountBackground = styled.ImageBackground.attrs({
   justify-content: center;
 `;
 
+// this is for dimming the whole screen a bit
 export const AccountCover = styled.View`
   position: absolute;
   width: 100%;
@@ -28,4 +30,8 @@ export const AuthButton = styled(Button).attrs({
   color: colors.brand.primary,
 })`
   padding: ${(props) => props.theme.space[2]};
+`;
+
+export const AuthInput = styled(TextInput)`
+  width: 300px;
 `;
