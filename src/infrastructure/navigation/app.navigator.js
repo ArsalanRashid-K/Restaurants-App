@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Text, Button } from "react-native";
 
 // import of navigation bar and icons .
