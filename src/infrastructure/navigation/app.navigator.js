@@ -9,6 +9,7 @@ import { SafeArea } from "../../components/Utility/safe-area-component";
 // SCREENS
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { MapScreen } from "../../features/maps/screens/map.screen";
+import { SettingsNavigator } from "./settings.navigator";
 
 import { RestaurantsContextProvider } from "../../services/restaurants/restaurants.context";
 import { LocationContextProvider } from "../../services/location/location.context";
@@ -25,15 +26,6 @@ const TAB_ICON = {
 };
 
 //Screens
-const Setting = () => {
-  const { onLogout } = useContext(AuthenticationContext);
-  return (
-    <SafeArea>
-      <Text>setting</Text>
-      <Button title="logout" onPress={() => onLogout()} />
-    </SafeArea>
-  );
-};
 
 const createScreenOptions = ({ route }) => {
   const iconName = TAB_ICON[route.name];
@@ -64,7 +56,7 @@ export const AppNavigation = () => {
 
             <Tab.Screen
               name="Settings"
-              component={Setting}
+              component={SettingsNavigator}
               // options={{ headerShown: false, tabBarBadge: 3 }}
             />
           </Tab.Navigator>
