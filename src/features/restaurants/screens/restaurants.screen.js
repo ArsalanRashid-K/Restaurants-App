@@ -12,6 +12,8 @@ import { RestaurantsContext } from "../../../services/restaurants/restaurants.co
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import { FavouritesBar } from "../../../components/favourites/favourite-bar.component";
 
+import { RestaurantList } from "../components/restaurant-list.styles";
+
 const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
 `;
@@ -20,11 +22,6 @@ const LoadingContainer = styled.View`
   top: 50%;
   left: 50%;
 `;
-const RestaurantList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 16,
-  },
-})``;
 
 export const RestaurantsScreen = ({ navigation }) => {
   //  navigation is a prop from stack and only component that are on the restaurant screen can access it-// console.log(navigation);
