@@ -15,7 +15,7 @@ import { LocationContextProvider } from "../../services/location/location.contex
 import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
 import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
-// part of Tab. navigation syntax
+// part of Tab. navigation syntax  s
 const Tab = createBottomTabNavigator();
 
 const TAB_ICON = {
