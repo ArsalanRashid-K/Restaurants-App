@@ -13,7 +13,7 @@ import { RestaurantsContextProvider } from "../../services/restaurants/restauran
 import { LocationContextProvider } from "../../services/location/location.context";
 import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
 
-// part of Tab. navigation syntax
+// part of Tab. navigation syntax  s
 const Tab = createBottomTabNavigator();
 
 const TAB_ICON = {
