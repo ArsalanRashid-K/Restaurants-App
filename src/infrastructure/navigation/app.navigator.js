@@ -7,7 +7,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 // SCREENS
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { MapScreen } from "../../features/maps/screens/map.screen";
-import { SettingsScreen } from "../../features/settings/screens/settings.screen";
+import { SettingsNavigator } from "./settings.navigator";
 
 import { RestaurantsContextProvider } from "../../services/restaurants/restaurants.context";
 import { LocationContextProvider } from "../../services/location/location.context";
@@ -53,7 +53,7 @@ export const AppNavigation = () => {
 
             <Tab.Screen
               name="Settings"
-              component={SettingsScreen}
+              component={SettingsNavigator}
               // options={{ headerShown: false, tabBarBadge: 3 }}
             />
           </Tab.Navigator>
