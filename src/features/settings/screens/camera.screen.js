@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import { Text } from "../../../components/typography/text.component";
 import { Camera } from "expo-camera";
 import styled from "styled-components/native";
 
+//  flex 1 is not working and wont show front camera
 const ProfileCamera = styled(Camera)`
-  flex: 1;
+  width: 100%;
+  height: 100%;
 `;
 
 export const CameraScreen = () => {
@@ -19,6 +21,13 @@ export const CameraScreen = () => {
     })();
   }, []);
 
+  const snap = async () => {
+    if (cameraRef.current) {
+      const photo = await cameraRef.current.takePictureAsync();
+      console.log(photo);
+    }
+  };
+
   if (hasPermission === null) {
     return <View />;
   }
@@ -26,9 +35,11 @@ export const CameraScreen = () => {
     return <Text>No access to camera</Text>;
   }
   return (
-    <ProfileCamera
-      ref={(camera) => (cameraRef.current = camera)}
-      type={Camera.Constants.Type.front}
-    ></ProfileCamera>
+    <TouchableOpacity onPress={snap}>
+      <ProfileCamera
+        ref={(camera) => (cameraRef.current = camera)}
+        type={Camera.Constants.Type.front}
+      />
+    </TouchableOpacity>
   );
 };
