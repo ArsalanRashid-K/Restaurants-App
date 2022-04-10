@@ -29,7 +29,7 @@ import {
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
 //  FIREBASE
-
+//  fibase key
 const firebaseConfig = {
   apiKey: "AIzaSyA-97l62d-vK8l_Gekmr0JQveCpXCDOzi0",
   authDomain: "mealstogo-50a6f.firebaseapp.com",
