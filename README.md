@@ -1,4 +1,4 @@
-# MealsToGo-App
+# Restaurants-App
 Built with react native and javascript for both iOS and Android Devices.
 
 ## Tools & Skills Used for this Project
